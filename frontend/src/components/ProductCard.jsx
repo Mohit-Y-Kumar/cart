@@ -8,7 +8,7 @@ const ProductCard = ({ product, addToCart }) => (
       className="w-full h-48 object-cover mb-3 rounded"
     />
     <h2 className="font-bold text-lg">{product.name}</h2>
-    <p className="text-gray-700 mt-1">${product.price}</p>
+    <p className="text-black text-2xl mt-1">${product.price}</p>
     <button
       className="bg-blue-500 text-white px-4 py-2 mt-3 rounded hover:bg-blue-600 w-full"
       onClick={() => addToCart(product)}
