@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+require('dotenv').config(); // Load .env variables
+
 
 // Product model
 const ProductSchema = new mongoose.Schema({
@@ -23,7 +25,9 @@ const products = [
 ];
 
 // Connect to MongoDB and insert products
-mongoose.connect('mongodb://127.0.0.1:27017/mockEcom', {
+
+const mongoURI = process.env.MONGO_URI ;
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
