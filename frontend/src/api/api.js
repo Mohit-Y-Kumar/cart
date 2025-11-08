@@ -5,14 +5,14 @@ const api = axios.create({
 });
 
 // Products
-export const getProducts = () => api.get("/products");
+export const getProducts = () => api.get("api/products");
 
 // Cart
-export const addToCart = (productId, qty) => api.post("/cart", { productId, qty });
-export const getCart = () => api.get("/cart");
-export const removeFromCart = (id) => api.delete(`/cart/${id}`);
+export const addToCart = (productId, qty) => api.post("api/cart", { productId, qty });
+export const getCart = () => api.get("api/cart");
+export const removeFromCart = (id) => api.delete(`api/cart/${id}`);
 
 // ✅ Checkout
-export const checkout = (user) => api.post("/cart/checkout", { user });
+export const checkout = (user) => api.post("api/cart/checkout", { user });
 
 export default api;

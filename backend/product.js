@@ -1,16 +1,4 @@
-const mongoose = require('mongoose');
-require('dotenv').config(); // Load .env variables
 
-
-// Product model
-const ProductSchema = new mongoose.Schema({
-  name: String,
-  price: Number,
-  image: String
-});
-const Product = mongoose.model('Product', ProductSchema);
-
-// Products with Amazon-style images
 const products = [
   { name: 'Wireless Headphones', price: 150, image: 'https://plus.unsplash.com/premium_photo-1679513691474-73102089c117?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=813' },
   { name: 'Smart Watch', price: 120, image: 'https://images.pexels.com/photos/2779018/pexels-photo-2779018.jpeg' },
@@ -23,24 +11,4 @@ const products = [
   { name: 'Wireless Charger', price: 40, image: 'https://images.unsplash.com/photo-1615526675159-e248c3021d3f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=386s://m.media-amazon.com/images/I/61J62v2A2XL._AC_SL1500_.jpg' },
   { name: 'HD Webcam', price: 70, image: 'https://images.unsplash.com/photo-1623949556303-b0d17d198863?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870s://m.media-amazon.com/images/I/61SjF5uPfQL._AC_SL1500_.jpg' }
 ];
-
-// Connect to MongoDB and insert products
-
-const mongoURI = process.env.MONGO_URI ;
-mongoose.connect(mongoURI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(async () => {
-  console.log('MongoDB connected');
-
-  // Optional: clear existing products
-  await Product.deleteMany({});
-
-  // Insert products
-  await Product.insertMany(products);
-  console.log('10 products inserted successfully');
-
-  mongoose.disconnect();
-})
-.catch(err => console.error('MongoDB connection error:', err));
+module.exports =  products;
